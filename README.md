@@ -15,6 +15,17 @@ I dati vengono presi dall'interfaccia ufficiale https://app.powerbi.com/view?r=e
 Regioni | Somministrazioni | Dosi consegnate | Percentuale | Popolazione | Copertura | Copertura Teorica | Data | 
 --- | --- | --- | --- |--- |--- |--- |--- |
 
+Significato delle colonne:
+  * Regioni = nome regione
+  * Somministrazoni = totale dosi somministrate
+  * Dosi consegnate = totale dosi consegnate
+  * Percentuale = percenuale dosi somministrate
+  * Popolazione = popolazione regione
+  * Copertura = copertura vaccinale basata su dosi somministrate
+  * Copertura Teorica = copertura vaccinale teorica basate su dosi consegnate
+  * Data = data di aggiornamento dei dati (inclusa)
+  
+
 ## Disclaimer
 Mi sollevo dai ogni responsabilità sulla correttezza dei dati. Potrebbero essere presenti errori occorsi durante l'ottenimento dei suddetti.
 
