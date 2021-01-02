@@ -1,5 +1,6 @@
 # vaccinazione_COVID19
 Andamento della vaccinazione per COVID19 in Italia, per regione. 
+All'interno della cartella "andamento_giornaliero" sono presenti i file CSV divisi per giorno.
 
 Sono stati aggiunti vari dati tra cui popolazione per regione, copertura vaccinale.
 
