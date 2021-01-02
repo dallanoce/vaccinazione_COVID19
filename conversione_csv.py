@@ -26,9 +26,13 @@ def convertion(input_path, date, dest_path):
     available = []
     percentage = []
 
+    total_somministrations = 0
+    total_available = 0
+    total_population = 0
+
     day, month = date.split(sep="_")
 
-    data = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE) - 1)
+    data = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE))
     data.insert(0, "Data")
 
     with open(input_path + date + '.txt') as fp:
@@ -64,13 +68,29 @@ def convertion(input_path, date, dest_path):
         copertura.append(str(round(int(somministrations[x].replace('.', '')) / int(POPOLAZIONE[x]) * 100, 3)) + '%')
         copertura_dosi.append(str(round(int(available[x].replace('.', '')) / int(POPOLAZIONE[x]) * 100, 3)) + '%')
 
+        total_somministrations += int(somministrations[x].replace('.', ''))
+        total_available += int(available[x].replace('.', ''))
+        total_population += int(POPOLAZIONE[x])
     print(copertura)
     print(copertura_dosi)
+
+    regions.append("Totale")
+    somministrations.append(total_somministrations)
+    available.append(total_available)
+    percentage.append(str(round(total_somministrations/total_available * 100,3))+'%')
+    POPOLAZIONE.append(total_population)
+    copertura.append(str(round(total_somministrations/total_population * 100,3))+'%')
+    copertura_dosi.append(str(round(total_available/total_population * 100,3))+'%')
 
     print("\n")
     result = [list(zipped) for zipped in
               zip(regions, somministrations, available, percentage, POPOLAZIONE, copertura, copertura_dosi, data)]
     print(result)
+
+
+
+
+
 
     np.savetxt(DEST_PATH + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
                delimiter=',', fmt='%s')
