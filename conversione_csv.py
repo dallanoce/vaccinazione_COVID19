@@ -1,9 +1,12 @@
 import numpy as np
+import datetime
 
 LINE = 4
 
 INPUT_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero_immagine/'
 DEST_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero/'
+
+POPOLAZIONE = ['Popolazione','1305770', '556934', '1924701', '5785861', '4467118', '1211357', '5865544', '1543127', '10103969', '1518400', '302265', '520891', '538223', '4341375', '4008296', '1630474', '4968410', '3722729', '880285', '125501','4907704']
 
 
 def convertion(input_path, date, dest_path):
@@ -11,6 +14,11 @@ def convertion(input_path, date, dest_path):
     somministrations = []
     available = []
     percentage = []
+
+    day , month = date.split(sep="_")
+
+    data = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE)-1)
+    data.insert(0,"Data")
 
     with open(input_path + date + '.txt') as fp:
         line = fp.readline()
@@ -35,7 +43,16 @@ def convertion(input_path, date, dest_path):
     print(available)
     print(percentage)
 
-    result = [list(zipped) for zipped in zip(regions,somministrations,available, percentage)]
+    copertura = []
+    copertura.append('Copertura')
+
+    for x in range(1,len(POPOLAZIONE)):
+        copertura.append( str(round(int(somministrations[x].replace('.',''))/int(POPOLAZIONE[x])*100,3))+'%')
+
+    print(copertura)
+
+    print("\n")
+    result = [list(zipped) for zipped in zip(regions, somministrations, available, percentage,POPOLAZIONE,copertura,data)]
     print(result)
 
     np.savetxt(DEST_PATH + date + '.csv', result,
