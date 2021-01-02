@@ -12,3 +12,7 @@ I dati vengono presi dall'interfaccia ufficiale https://app.powerbi.com/view?r=e
 
 ## Disclaimer
 Mi sollevo dai ogni responsabilità sulla correttezza dei dati. Potrebbero essere presenti errori occorsi durante l'ottenimento dei suddetti.
+
+## Struttura Attuale
+Regioni | Somministrazioni | Dosi consegnate | Percentuale | Popolazione | Copertura | Data | 
+--- | --- | --- | --- |--- |--- |--- |
