@@ -55,7 +55,7 @@ def convertion(input_path, date, dest_path):
     result = [list(zipped) for zipped in zip(regions, somministrations, available, percentage,POPOLAZIONE,copertura,data)]
     print(result)
 
-    np.savetxt(DEST_PATH + date + '.csv', result,
+    np.savetxt(DEST_PATH + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
                delimiter=',', fmt='%s')
 
 
