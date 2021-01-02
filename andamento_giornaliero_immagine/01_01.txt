@@ -1,6 +1,7 @@
 Regioni
 Somministrazioni
 Dosi consegnate
+Percentuale
 Abruzzo
 135
 7.935
