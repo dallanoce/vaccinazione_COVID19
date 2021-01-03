@@ -120,6 +120,6 @@ def convertionCategory(date, dest_path, latest=False):
 
 convertion(DATE, DEST_PATH, latest=True)
 
-# convertionGroup(DATE, DEST_PATH_GROUP, latest=True)
+convertionGroup(DATE, DEST_PATH_GROUP, latest=True)
 
-# convertionCategory(DATE, DEST_PATH_CATEGORY, latest=True)
+convertionCategory(DATE, DEST_PATH_CATEGORY, latest=True)
