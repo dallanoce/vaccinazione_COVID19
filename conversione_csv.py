@@ -1,6 +1,6 @@
 import numpy as np
 import datetime
-from scraping import scraping, scrapingGroup
+from scraping import scraping, scrapingGroup, scrapingCategory
 
 DATE = '03_01'
 
@@ -9,11 +9,14 @@ LINE = 4
 INPUT_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero_immagine/'
 DEST_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero/'
 DEST_PATH_GROUP = 'E:/vaccinazione_COVID19/andamento_giornaliero_gruppi/'
+DEST_PATH_CATEGORY = 'E:/vaccinazione_COVID19/andamento_giornaliero_categorie/'
 
 POPOLAZIONE = ['Popolazione', '1305770', '556934', '1924701', '5785861', '4467118', '1211357', '5865544', '1543127',
                '10103969', '1518400', '302265', '520891', '538223', '4341375', '4008296', '1630474', '4968410',
                '3722729', '880285', '125501', '4907704']  # dati ISTAT 12/2019
 FASCE_ETA = ['Fasce Età', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90+']
+
+CATEGORIE = ['Categorie', 'Operatori Sanitari', 'Personale non Sanitario', 'Ospiti RSA']
 
 LINK = "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9"
 
@@ -87,8 +90,28 @@ def convertionGroup(date, dest_path, latest=False):
                    delimiter=',', fmt='%s')
 
 
-convertion(DATE, DEST_PATH, latest=True)
+def convertionCategory(date, dest_path, latest=False):
+    day, month = date.split(sep="_")
+    data = scrapingCategory(LINK)
 
-convertionGroup(DATE, DEST_PATH_GROUP, latest=True)
+    date = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE))
+    date.insert(0, "Data")
 
-# extractText(INPUT_PATH,'01_01')
+    result = [list(zipped) for zipped in
+              zip(np.array(CATEGORIE), np.array(data), np.array(date))]
+
+    print(result)
+
+    np.savetxt(dest_path + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
+               delimiter=',', fmt='%s')
+
+    if latest:
+        np.savetxt(dest_path + 'latest' + '.csv', result,
+                   delimiter=',', fmt='%s')
+
+
+#convertion(DATE, DEST_PATH, latest=True)
+
+#convertionGroup(DATE, DEST_PATH_GROUP, latest=True)
+
+convertionCategory(DATE, DEST_PATH_CATEGORY, latest=True)
