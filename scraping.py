@@ -67,7 +67,7 @@ def scrapingGroup(link):
     driver.get(link)
 
     WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "labelGraphicsContext")))
+        EC.presence_of_element_located((By.CLASS_NAME, "label")))
     parent = driver.find_element_by_class_name("labelGraphicsContext")
     # print(parent)
     children = parent.find_elements_by_xpath('.//*')

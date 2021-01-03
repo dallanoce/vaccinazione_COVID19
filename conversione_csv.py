@@ -18,7 +18,7 @@ FASCE_ETA = ['Fasce Età', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69',
 LINK = "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9"
 
 
-def convertion(date, dest_path):
+def convertion(date, dest_path, latest=False):
     total_somministrations = 0
     total_available = 0
     total_population = 0
@@ -62,8 +62,12 @@ def convertion(date, dest_path):
     np.savetxt(dest_path + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
                delimiter=',', fmt='%s')
 
+    if latest:
+        np.savetxt(dest_path + 'latest' + '.csv', result,
+                   delimiter=',', fmt='%s')
 
-def convertionGroup(date, dest_path):
+
+def convertionGroup(date, dest_path, latest=False):
     day, month = date.split(sep="_")
     data = scrapingGroup(LINK)
 
@@ -78,9 +82,13 @@ def convertionGroup(date, dest_path):
     np.savetxt(dest_path + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
                delimiter=',', fmt='%s')
 
+    if latest:
+        np.savetxt(dest_path + 'latest' + '.csv', result,
+                   delimiter=',', fmt='%s')
 
-convertion(DATE, DEST_PATH)
 
-convertionGroup(DATE, DEST_PATH_GROUP)
+convertion(DATE, DEST_PATH, latest=True)
+
+convertionGroup(DATE, DEST_PATH_GROUP, latest=True)
 
 # extractText(INPUT_PATH,'01_01')
