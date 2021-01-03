@@ -11,11 +11,11 @@ Una volta che i dati verranno resi pubblici in formato machine-readable, questo 
 I dati vengono presi dall'interfaccia ufficiale https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9
 
 ## Dipendenze
-	* numpy
-	* datetime
-	* PIL
-	* pytesseract
-	* selenium
+	numpy
+	datetime
+	PIL (rimossa nei prossimi update)
+	pytesseract (rimossa nei prossimi update)
+	selenium
 
 ## Struttura Attuale
 Regioni | Somministrazioni | Dosi consegnate | Percentuale | Popolazione | Copertura | Copertura Teorica | Data | 
