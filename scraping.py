@@ -47,7 +47,7 @@ def scraping(link):
         available.append(data[x])
     available.append(data[-2])
     for x in range(2 * ln, 3 * ln):
-        percentage.append(data[x])
+        percentage.append(data[x].replace(",","."))
     percentage.append(data[-1])
 
     regions.insert(0, "Regioni")
