@@ -96,6 +96,6 @@ def convertion(input_path, date, dest_path):
                delimiter=',', fmt='%s')
 
 
-convertion(INPUT_PATH, '01_01', DEST_PATH)
+convertion(INPUT_PATH, '02_01', DEST_PATH)
 
 # extractText(INPUT_PATH,'01_01')
