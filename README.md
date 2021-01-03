@@ -9,7 +9,7 @@ Una volta che i dati verranno resi pubblici in formato machine-readable, questo 
 ## Struttura
 
 * andamento_giornaliero = andamento giornaliere delle varie regioni
-* andamento_giornaliero_grppi = andamento giornaliero delle fasce d'età.
+* andamento_giornaliero_gruppi = andamento giornaliero delle fasce d'età.
 
 
 ## Fonte
