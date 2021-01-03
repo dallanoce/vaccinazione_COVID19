@@ -1,8 +1,8 @@
 # vaccinazione_COVID19
 Andamento della vaccinazione per COVID19 in Italia, per regione. 
-All'interno della cartella "andamento_giornaliero" sono presenti i file CSV divisi per giorno.
+All'interno della cartella "andamento_giornaliero" sono presenti i file CSV divisi per giorno. I dati sono ottenuti attraverso scraping utilizzando Selenium.
 
-Sono stati aggiunti vari dati tra cui popolazione per regione, copertura vaccinale.
+Sono stati aggiunte varie informazioni ritenute utili tra cui popolazione per regione, copertura vaccinale.
 
 Una volta che i dati verranno resi pubblici in formato machine-readable, questo repo sarà dismesso.
 
@@ -10,6 +10,12 @@ Una volta che i dati verranno resi pubblici in formato machine-readable, questo 
 
 I dati vengono presi dall'interfaccia ufficiale https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9
 
+## Dipendenze
+	* numpy
+	* datetime
+	* PIL
+	* pytesseract
+	* selenium
 
 ## Struttura Attuale
 Regioni | Somministrazioni | Dosi consegnate | Percentuale | Popolazione | Copertura | Copertura Teorica | Data | 
