@@ -13,11 +13,9 @@ DEST_PATH_GROUP = 'E:/vaccinazione_COVID19/andamento_giornaliero_gruppi/'
 POPOLAZIONE = ['Popolazione', '1305770', '556934', '1924701', '5785861', '4467118', '1211357', '5865544', '1543127',
                '10103969', '1518400', '302265', '520891', '538223', '4341375', '4008296', '1630474', '4968410',
                '3722729', '880285', '125501', '4907704']  # dati ISTAT 12/2019
-FASCE_ETA = ['Fasce Età','16-19','20-29','30-39','40-49','50-59','60-69','70-79','80-89','90+']
+FASCE_ETA = ['Fasce Età', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-89', '90+']
 
 LINK = "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9"
-
-
 
 
 def convertion(date, dest_path):
@@ -69,13 +67,17 @@ def convertionGroup(date, dest_path):
     day, month = date.split(sep="_")
     data = scrapingGroup(LINK)
 
+    date = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE))
+    date.insert(0, "Data")
+
     result = [list(zipped) for zipped in
-              zip(np.array(FASCE_ETA), np.array( data))]
+              zip(np.array(FASCE_ETA), np.array(data), np.array(date))]
 
     print(result)
 
     np.savetxt(dest_path + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
                delimiter=',', fmt='%s')
+
 
 convertion(DATE, DEST_PATH)
 

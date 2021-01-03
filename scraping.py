@@ -41,14 +41,14 @@ def scraping(link):
     ln = len(regions) - 1
 
     for x in range(ln):
-        somministrations.append(data[x].replace(",","."))
-    somministrations.append(data[-3].replace(",","."))
+        somministrations.append(data[x].replace(",", "."))
+    somministrations.append(data[-3].replace(",", "."))
     for x in range(ln, 2 * ln):
-        available.append(data[x].replace(",","."))
-    available.append(data[-2].replace(",","."))
+        available.append(data[x].replace(",", "."))
+    available.append(data[-2].replace(",", "."))
     for x in range(2 * ln, 3 * ln):
-        percentage.append(data[x].replace(",","."))
-    percentage.append(data[-1].replace(",","."))
+        percentage.append(data[x].replace(",", "."))
+    percentage.append(data[-1].replace(",", "."))
 
     regions.insert(0, "Regioni")
     somministrations.insert(0, "Somministrazioni")
@@ -61,17 +61,16 @@ def scraping(link):
 
     return regions, somministrations, available, percentage
 
-def scrapingGroup(link):
 
+def scrapingGroup(link):
     driver = webdriver.Chrome(executable_path=r'C:\WebDrivers\chromedriver.exe')
     driver.get(link)
 
-    WebDriverWait(driver,10).until(
+    WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.CLASS_NAME, "labelGraphicsContext")))
     parent = driver.find_element_by_class_name("labelGraphicsContext")
     # print(parent)
     children = parent.find_elements_by_xpath('.//*')
-
 
     data = [child.get_attribute('innerHTML') for child in children]
     data.insert(0, "Vaccinati")
@@ -80,4 +79,4 @@ def scrapingGroup(link):
 
     return data
 
-#scrapingGroup("https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9")
+# scrapingGroup("https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9")
