@@ -18,6 +18,10 @@ FASCE_ETA = ['Fasce Età', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69',
 
 CATEGORIE = ['Categorie', 'Operatori Sanitari', 'Personale non Sanitario', 'Ospiti RSA']
 
+PERSONALE_SANITARIO = ['Personale Sanitario', '10296', '4695', '13183', '31503', '40502', '11905', '30589', '10752',
+                       '59164', '13019', '2105', '5530', '5226', '36596', '25601', '15403', '30801', '35651', '8164',
+                       '1364', '39443']  # dati ISTAT 2017
+
 LINK = "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9"
 
 
@@ -25,6 +29,7 @@ def convertion(date, dest_path, latest=False):
     total_somministrations = 0
     total_available = 0
     total_population = 0
+    total_health = 0
 
     day, month = date.split(sep="_")
 
@@ -46,6 +51,7 @@ def convertion(date, dest_path, latest=False):
         total_somministrations += int(somministrations[x].replace('.', ''))
         total_available += int(available[x].replace('.', ''))
         total_population += int(POPOLAZIONE[x])
+        total_health += int(PERSONALE_SANITARIO[x])
     print(copertura)
     print(copertura_dosi)
 
@@ -54,12 +60,14 @@ def convertion(date, dest_path, latest=False):
     available.append(total_available)
     percentage.append(str(round(total_somministrations / total_available * 100, 3)) + '%')
     POPOLAZIONE.append(total_population)
+    PERSONALE_SANITARIO.append(total_health)
     copertura.append(str(round(total_somministrations / total_population * 100, 3)) + '%')
     copertura_dosi.append(str(round(total_available / total_population * 100, 3)) + '%')
 
     print("\n")
     result = [list(zipped) for zipped in
-              zip(regions, somministrations, available, percentage, POPOLAZIONE, copertura, copertura_dosi, data)]
+              zip(regions, somministrations, available, percentage, POPOLAZIONE, PERSONALE_SANITARIO, copertura,
+                  copertura_dosi, data)]
     print(result)
 
     np.savetxt(dest_path + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
@@ -110,8 +118,8 @@ def convertionCategory(date, dest_path, latest=False):
                    delimiter=',', fmt='%s')
 
 
-#convertion(DATE, DEST_PATH, latest=True)
+convertion(DATE, DEST_PATH, latest=True)
 
-#convertionGroup(DATE, DEST_PATH_GROUP, latest=True)
+# convertionGroup(DATE, DEST_PATH_GROUP, latest=True)
 
-convertionCategory(DATE, DEST_PATH_CATEGORY, latest=True)
+# convertionCategory(DATE, DEST_PATH_CATEGORY, latest=True)

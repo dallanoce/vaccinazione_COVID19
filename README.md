@@ -30,9 +30,10 @@ Significato delle colonne:
   * Somministrazoni = totale dosi somministrate
   * Dosi consegnate = totale dosi consegnate
   * Percentuale = percenuale dosi somministrate
-  * Popolazione = popolazione regione
-  * Copertura = copertura vaccinale basata su dosi somministrate
-  * Copertura Teorica = copertura vaccinale teorica basate su dosi consegnate
+  * Popolazione = popolazione regione, dati ISTAT 2019
+  * Personale Sanitario = totale personale sanitario, dati ISTAT 2017
+  * Copertura = copertura vaccinale basata su dosi somministrate sull'intera popolazione
+  * Copertura Teorica = copertura vaccinale teorica basate su dosi consegnate (sull'intera popolazione)
   * Data = data di aggiornamento dei dati (inclusa)
   
 
