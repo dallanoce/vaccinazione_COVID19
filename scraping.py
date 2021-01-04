@@ -41,11 +41,11 @@ def scraping(link):
     ln = len(regions) - 1
 
     for x in range(ln):
-        somministrations.append(data[x].replace(",", "."))
-    somministrations.append(data[-3].replace(",", "."))
+        somministrations.append(data[x].replace(",", ""))
+    somministrations.append(data[-3].replace(",", ""))
     for x in range(ln, 2 * ln):
-        available.append(data[x].replace(",", "."))
-    available.append(data[-2].replace(",", "."))
+        available.append(data[x].replace(",", ""))
+    available.append(data[-2].replace(",", ""))
     for x in range(2 * ln, 3 * ln):
         percentage.append(data[x].replace(",", "."))
     percentage.append(data[-1].replace(",", "."))
