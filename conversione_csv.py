@@ -2,7 +2,7 @@ import numpy as np
 import datetime
 from scraping import scraping, scrapingGroup, scrapingCategory
 
-DATE = '03_01'
+DATE = '04_01'
 
 LINE = 4
 
