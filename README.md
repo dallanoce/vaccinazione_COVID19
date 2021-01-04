@@ -22,6 +22,10 @@ I dati vengono presi dall'interfaccia ufficiale https://app.powerbi.com/view?r=e
 	Numpy
 	Datetime
 	Selenium
+	Pandas
+	OS
+	Glob
+	Matplotlib
 
 ## Struttura Attuale
 Regioni | Somministrazioni | Dosi consegnate | Percentuale | Popolazione | Copertura | Copertura Teorica | Data | 
