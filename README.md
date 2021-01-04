@@ -9,7 +9,9 @@ Una volta che i dati verranno resi pubblici in formato machine-readable, questo 
 ## Struttura
 
 * andamento_giornaliero = andamento giornaliere delle varie regioni
-* andamento_giornaliero_gruppi = andamento giornaliero delle fasce d'età.
+* andamento_giornaliero_gruppi = andamento giornaliero per fasce d'età.
+* andamento_giornaliero_categorie = andamento giornaliero per categorie (Personale sanitario etc.)
+* andamento_giornaliero_regioni = andamento nel tempo per ogni regione. In "Totale.csv" è presente l'andamento nazionale.
 
 
 ## Fonte
