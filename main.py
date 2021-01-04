@@ -1,5 +1,6 @@
 import conversione_csv
 import regions_elaboration
+import plot_regions
 
 DATE = '04_01'
 
@@ -10,6 +11,7 @@ DEST_PATH_CATEGORY = 'E:/vaccinazione_COVID19/andamento_giornaliero_categorie/'
 
 PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero/'
 DEST_PATH_REGIONS = 'E:/vaccinazione_COVID19/andamento_giornaliero_regioni/'
+DEST_PATH_GRAFICI = 'E:/vaccinazione_COVID19/andamento_giornaliero_regioni_grafici/'
 
 LINK = "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9"
 
@@ -25,6 +27,10 @@ def main():
 
     print("Regions creation..")
     regions_elaboration.regionsElaborations(PATH, DEST_PATH_REGIONS)
+    print("Done.")
+
+    print("Plotting regions..")
+    plot_regions.plotRegions(DEST_PATH_REGIONS, DEST_PATH_GRAFICI)
     print("Done.")
 
 
