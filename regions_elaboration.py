@@ -2,11 +2,10 @@ import glob
 import numpy as np
 import pandas as pd
 
-PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero/'
-DEST_PATH_REGIONS = 'E:/vaccinazione_COVID19/andamento_giornaliero_regioni/'
-
 COL = ['Regioni', 'Somministrazioni', 'Dosi Consegnate', 'Percentuale', 'Popolazione', 'Copertura',
        'Copertura Teorica', 'Data']
+
+LINK = "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9"
 
 
 def regionsElaborations(path, dest_path):
@@ -31,6 +30,3 @@ def regionsElaborations(path, dest_path):
 
         np.savetxt(dest_path + region + '.csv', np.array(current_region),
                    delimiter=',', fmt='%s')
-
-
-regionsElaborations(PATH, DEST_PATH_REGIONS)

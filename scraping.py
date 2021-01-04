@@ -5,16 +5,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 def scraping(link):
-    """
-    options = webdriver.ChromeOptions()
-    options.add_argument("start-maximized")
-    options.add_experimental_option("excludeSwitches", ["enable-automation"])
-    options.add_experimental_option('useAutomationExtension', False)
-    """
     driver = webdriver.Chrome(executable_path=r'C:\WebDrivers\chromedriver.exe')
     driver.get(link)
-    # parent = driver.find_element_by_xpath(
-    #    "/html/body/div[1]/root/div/div/div[1]/div/div/div/exploration-container/exploration-container-modern/div/div/div/exploration-host/div/div/exploration/div/explore-canvas-modern/div/div[2]/div/div[2]/div[2]/visual-container-repeat/visual-container-modern[32]/transform/div/div[3]/div/visual-modern/div/div")
+
     WebDriverWait(driver, 100).until(
         EC.presence_of_element_located((By.CLASS_NAME, "rowHeaders")))
     regions_parent = driver.find_element_by_class_name("rowHeaders")
@@ -88,7 +81,7 @@ def scrapingCategory(link):
         EC.presence_of_element_located((By.CLASS_NAME, "label")))
     parent = driver.find_elements_by_css_selector(
         "html body div#pbiAppPlaceHolder root div div#embedWrapperID.embedWrapper div.landingController.fillAvailableSpace div.landingContainer div#reportLandingContainer.embeddedLandingRootContent.reportContainerContent.isActive.embeddedPV.embeddedLandingRootContentLogoVisible div.embeddedPV exploration-container exploration-container-modern div.explorationContainer.explorationWithChrome.themeableElement.reading.newPaneColors div.explorationContent.fill div.explorationHost.explorationHostNoAppBar exploration-host#pvExplorationHost div.fillAvailableSpace.verticalItemsContainer div.horizontalItemsContainer exploration.exploreCanvasToBottom div.exploration explore-canvas-modern.explore-canvas-modern-style div.exploreCanvas.themeableElement.disableAnimations.stylableVisualContainerHeader.master-form-factor div.canvasFlexBox div.displayAreaContainer.droppableElement.ui-droppable div.displayArea.disableAnimations.actualSizeAlignCenter.actualSizeAlignTop.actualSizeOrigin div.visualContainerHost visual-container-repeat visual-container-modern.visual-container-component transform.bringToFront div.visualContainer.unselectable.droppableElement.ui-droppable.readMode.hideBorder.noVisualTitle.visualHeaderAbove div div.vcBody.themableBackgroundColor.themableBorderColorSolid visual-modern div.visual.visual-barChart.allow-deferred-rendering svg.cartesianChart svg.svgScrollable g.labelGraphicsContext")
-    #print(parent)
+    # print(parent)
     children = parent[0].find_elements_by_xpath('.//*')
 
     data = [child.get_attribute('innerHTML') for child in children]
@@ -97,7 +90,3 @@ def scrapingCategory(link):
     print(data)
 
     return data
-
-# scrapingGroup("https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9")
-
-# scrapingCategory("https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9")

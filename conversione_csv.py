@@ -2,15 +2,6 @@ import numpy as np
 import datetime
 from scraping import scraping, scrapingGroup, scrapingCategory
 
-DATE = '04_01'
-
-LINE = 4
-
-INPUT_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero_immagine/'
-DEST_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero/'
-DEST_PATH_GROUP = 'E:/vaccinazione_COVID19/andamento_giornaliero_gruppi/'
-DEST_PATH_CATEGORY = 'E:/vaccinazione_COVID19/andamento_giornaliero_categorie/'
-
 POPOLAZIONE = ['Popolazione', '1305770', '556934', '1924701', '5785861', '4467118', '1211357', '5865544', '1543127',
                '10103969', '1518400', '302265', '520891', '538223', '4341375', '4008296', '1630474', '4968410',
                '3722729', '880285', '125501', '4907704']  # dati ISTAT 12/2019
@@ -22,10 +13,8 @@ PERSONALE_SANITARIO = ['Personale Sanitario', '10296', '4695', '13183', '31503',
                        '59164', '13019', '2105', '5530', '5226', '36596', '25601', '15403', '30801', '35651', '8164',
                        '1364', '39443']  # dati ISTAT 2017
 
-LINK = "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9"
 
-
-def convertion(date, dest_path, latest=False):
+def convertion(date, link, dest_path, latest=False):
     total_somministrations = 0
     total_available = 0
     total_population = 0
@@ -36,7 +25,7 @@ def convertion(date, dest_path, latest=False):
     data = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE))
     data.insert(0, "Data")
 
-    regions, somministrations, available, percentage = scraping(LINK)
+    regions, somministrations, available, percentage = scraping(link)
 
     copertura = []
     copertura.append('Copertura')
@@ -78,9 +67,9 @@ def convertion(date, dest_path, latest=False):
                    delimiter=',', fmt='%s')
 
 
-def convertionGroup(date, dest_path, latest=False):
+def convertionGroup(date, link, dest_path, latest=False):
     day, month = date.split(sep="_")
-    data = scrapingGroup(LINK)
+    data = scrapingGroup(link)
 
     date = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE))
     date.insert(0, "Data")
@@ -98,9 +87,9 @@ def convertionGroup(date, dest_path, latest=False):
                    delimiter=',', fmt='%s')
 
 
-def convertionCategory(date, dest_path, latest=False):
+def convertionCategory(date, link, dest_path, latest=False):
     day, month = date.split(sep="_")
-    data = scrapingCategory(LINK)
+    data = scrapingCategory(link)
 
     date = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE))
     date.insert(0, "Data")
@@ -116,10 +105,3 @@ def convertionCategory(date, dest_path, latest=False):
     if latest:
         np.savetxt(dest_path + 'latest' + '.csv', result,
                    delimiter=',', fmt='%s')
-
-
-convertion(DATE, DEST_PATH, latest=True)
-
-convertionGroup(DATE, DEST_PATH_GROUP, latest=True)
-
-convertionCategory(DATE, DEST_PATH_CATEGORY, latest=True)
