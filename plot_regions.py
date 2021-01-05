@@ -19,8 +19,21 @@ def plotRegions(path, dest_path):
         df.plot(x='Data', y=['Somministrazioni', 'Dosi Consegnate'], kind='line', title=filename, grid=True,
                 xticks=np.arange(len(df['Data'])),
                 legend=True, style='.-')
-        plt.fill_between(np.arange(len(df['Data'])),df['Somministrazioni'],alpha=0.4)
+
+        for i, txt in enumerate(df['Somministrazioni']):
+            plt.text(i - 0.3, txt, txt)
+
+        plt.fill_between(np.arange(len(df['Data'])), df['Somministrazioni'], alpha=0.4)
+
         plt.savefig(fname=dest_path + filename + '.png')
         #plt.show()
 
         print(x)
+
+
+"""
+DEST_PATH_REGIONS = 'E:/vaccinazione_COVID19/andamento_giornaliero_regioni/'
+DEST_PATH_GRAFICI = 'E:/vaccinazione_COVID19/andamento_giornaliero_regioni_grafici/'
+
+plotRegions(DEST_PATH_REGIONS, DEST_PATH_GRAFICI)
+"""
