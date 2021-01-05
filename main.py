@@ -2,7 +2,7 @@ import conversione_csv
 import regions_elaboration
 import plot_regions
 
-DATE = '04_01'
+DATE = '05_01'
 
 INPUT_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero_immagine/'
 DEST_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero/'
