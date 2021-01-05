@@ -19,10 +19,10 @@ Una volta che i dati verranno resi pubblici in formato machine-readable, questo 
 I dati vengono presi dall'interfaccia ufficiale https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9
 
 ## Dipendenze
-selenium~=3.141.0
-matplotlib~=3.1.1
-pandas~=0.25.1
-numpy~=1.16.5
+* selenium~=3.141.0
+* matplotlib~=3.1.1
+* pandas~=0.25.1
+* numpy~=1.16.5
 
 ## Struttura Attuale
 Regioni | Somministrazioni | Dosi consegnate | Percentuale | Popolazione | Copertura | Copertura Teorica | Data | 
