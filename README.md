@@ -4,7 +4,7 @@ I dati sono ottenuti attraverso scraping utilizzando Selenium.
 
 Sono stati aggiunte varie informazioni ritenute utili tra cui popolazione per regione, copertura vaccinale.
 
-Una volta che i dati verranno resi pubblici in formato machine-readable, questo repo sarà dismesso.
+Una volta che i dati verranno resi pubblici in formato machine-readable, questo repo sarà probabilemnte dismesso.
 
 ## Struttura
 
