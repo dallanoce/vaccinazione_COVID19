@@ -22,7 +22,7 @@ def convertion(date, link, dest_path, latest=False):
 
     day, month = date.split(sep="_")
 
-    data = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE))
+    data = [str(datetime.date(2021, int(month), int(day)))] * (len(POPOLAZIONE))
     data.insert(0, "Data")
 
     regions, somministrations, available, percentage = scraping(link)
@@ -59,7 +59,7 @@ def convertion(date, link, dest_path, latest=False):
                   copertura_dosi, data)]
     print(result)
 
-    np.savetxt(dest_path + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
+    np.savetxt(dest_path + str(datetime.date(2021, int(month), int(day))) + '.csv', result,
                delimiter=',', fmt='%s')
 
     if latest:
@@ -71,7 +71,7 @@ def convertionGroup(date, link, dest_path, latest=False):
     day, month = date.split(sep="_")
     data = scrapingGroup(link)
 
-    date = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE))
+    date = [str(datetime.date(2021, int(month), int(day)))] * (len(POPOLAZIONE))
     date.insert(0, "Data")
 
     result = [list(zipped) for zipped in
@@ -79,7 +79,7 @@ def convertionGroup(date, link, dest_path, latest=False):
 
     print(result)
 
-    np.savetxt(dest_path + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
+    np.savetxt(dest_path + str(datetime.date(2021, int(month), int(day))) + '.csv', result,
                delimiter=',', fmt='%s')
 
     if latest:
@@ -91,7 +91,7 @@ def convertionCategory(date, link, dest_path, latest=False):
     day, month = date.split(sep="_")
     data = scrapingCategory(link)
 
-    date = [str(datetime.date(2020, int(month), int(day)))] * (len(POPOLAZIONE))
+    date = [str(datetime.date(2021, int(month), int(day)))] * (len(POPOLAZIONE))
     date.insert(0, "Data")
 
     result = [list(zipped) for zipped in
@@ -99,7 +99,7 @@ def convertionCategory(date, link, dest_path, latest=False):
 
     print(result)
 
-    np.savetxt(dest_path + str(datetime.date(2020, int(month), int(day))) + '.csv', result,
+    np.savetxt(dest_path + str(datetime.date(2021, int(month), int(day))) + '.csv', result,
                delimiter=',', fmt='%s')
 
     if latest:

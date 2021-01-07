@@ -9,7 +9,7 @@ LINK = "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtO
 
 
 def regionsElaborations(path, dest_path):
-    all_files = glob.glob(path + "/2020*.csv")
+    all_files = glob.glob(path + "/2021*.csv")
 
     df = pd.read_csv(all_files[0],
                      usecols=['Regioni'], header=0)
