@@ -1,5 +1,5 @@
 
-DATE = '06_01'
+DATE = input("Enter Date (DD_MM): ")
 
 INPUT_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero_immagine/'
 DEST_PATH = 'E:/vaccinazione_COVID19/andamento_giornaliero/'
