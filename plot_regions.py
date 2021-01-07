@@ -18,8 +18,8 @@ def plotRegions(path, dest_path):
 
         date = df['Data'].copy()
 
-        for x in range(0,len(date)):
-            date[x] = date[x].strip("2020-")
+        for k in range(0,len(date)):
+            date[x] = date[k].strip("2020-")
 
         ax = df.plot(x='Data', y=['Somministrazioni', 'Dosi Consegnate'], kind='line', title=filename, grid=True,
                 xticks=np.arange(len(df['Data'])),  lw = 2, rot = 90,
