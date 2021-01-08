@@ -25,7 +25,7 @@ I dati vengono presi dall'interfaccia ufficiale https://app.powerbi.com/view?r=e
 * numpy~=1.16.5
 
 ## Struttura Attuale
-Regioni | Somministrazioni | Dosi consegnate | Percentuale | Popolazione | Copertura | Copertura Teorica | Data | 
+Regioni | Somministrazioni | Dosi consegnate | Percentuale | Popolazione | Personale Sanitario | Copertura | Copertura Teorica | Data | 
 --- | --- | --- | --- |--- |--- |--- |--- |
 
 Significato delle colonne:
