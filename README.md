@@ -44,6 +44,6 @@ Significato delle colonne:
 Mi sollevo dai ogni responsabilità sulla correttezza dei dati. Potrebbero essere presenti errori occorsi durante l'ottenimento dei suddetti.
 
 
-## Esempio Grafici Andamento Regionale
+## Esempio Grafici Andamento
 
-![alt text](https://github.com/dallanoce/vaccinazione_COVID19/blob/main/andamento_giornaliero_regioni_grafici/Abruzzo.png)
+![alt text](https://github.com/dallanoce/vaccinazione_COVID19/blob/main/andamento_giornaliero_regioni_grafici/Totale.png)
