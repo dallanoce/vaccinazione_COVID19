@@ -55,9 +55,9 @@ def plotRegions(path, dest_path):
         print(x)
 
 
-
+"""
 DEST_PATH_REGIONS = 'E:/vaccinazione_COVID19/andamento_giornaliero_regioni/'
 DEST_PATH_GRAFICI = 'E:/vaccinazione_COVID19/andamento_giornaliero_regioni_grafici/'
 
 plotRegions(DEST_PATH_REGIONS, DEST_PATH_GRAFICI)
-
+"""
