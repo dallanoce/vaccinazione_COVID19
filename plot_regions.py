@@ -33,7 +33,7 @@ def plotRegions(path, dest_path):
         for i, txt in enumerate(df['Dosi Consegnate']):
             plt.text(i - 0.3, txt, txt)
 
-        plt.fill_between(np.arange(len(df['Data'])), df['Somministrazioni'], alpha=0.4)
+        plt.fill_between(np.arange(len(df['Data (YYYY-MM-DD)'])), df['Somministrazioni'], alpha=0.4)
 
         plt.savefig(fname=dest_path + filename + '.png',pad_inches = 0.3,bbox_inches= 'tight')
         #plt.show()
