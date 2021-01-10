@@ -5,7 +5,7 @@ import os
 import numpy as np
 
 COL = ['Somministrazioni', 'Dosi Consegnate', 'Data']
-
+F = 8
 
 def plotRegions(path, dest_path):
     all_files = glob.glob(path + "/*.csv")
@@ -36,13 +36,13 @@ def plotRegions(path, dest_path):
         plt.xlim(0,len(df['Data']))
 
         for i, txt in enumerate(df['Somministrazioni']):
-            plt.text(i - 0.3, txt, txt)
+            plt.text(i - 0.3, txt, txt, fontsize=F)
 
         for i, txt in enumerate(df['Dosi Consegnate']):
-            plt.text(i - 0.3, txt, txt)
+            plt.text(i - 0.3, txt, txt, fontsize=F)
 
         for i, txt in enumerate(daily):
-            plt.text(i - 0.22, txt, txt,color='#3b4d8a')
+            plt.text(i - 0.22, txt, txt,color='#3b4d8a', fontsize=F)
 
         plt.fill_between(np.arange(len(df['Data'])), df['Somministrazioni'], alpha=0.4,label='_nolegend_')
 
