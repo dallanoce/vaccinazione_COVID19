@@ -52,7 +52,7 @@ def plotRegions(path, dest_path):
         plt.savefig(fname=dest_path + filename + '.png',pad_inches = 0.3,bbox_inches= 'tight')
         #plt.show()
 
-        print(x)
+        #print(x)
 
 
 """

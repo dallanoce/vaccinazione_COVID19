@@ -3,7 +3,39 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 import numpy as np
+import datetime
 
+def getDate(link):
+    driver = webdriver.Chrome(executable_path=r'C:\WebDrivers\chromedriver.exe')
+    driver.get(link)
+
+    WebDriverWait(driver, 100).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "rowHeaders")))
+    parent = driver.find_element_by_class_name("visibleGroup")
+
+    # print(parent)
+    children = parent.find_elements_by_xpath('.//*')
+
+    data = [child.get_attribute('title') for child in children]
+
+    while '' in data:
+        data.remove('')
+
+    date_time_obj = datetime.datetime.strptime(data[0], '%d/%m/%Y %H:%M:%S')
+
+
+
+    hour = date_time_obj.hour
+
+    if hour < 9:
+        date_time_obj -= datetime.timedelta(days = 1)
+
+    month = date_time_obj.month
+    day = date_time_obj.day
+
+    print(date_time_obj)
+
+    return str(day)+'_'+str(month)
 
 def scraping(link):
     driver = webdriver.Chrome(executable_path=r'C:\WebDrivers\chromedriver.exe')
@@ -123,4 +155,4 @@ def scrapingSomministrationPoints(link): #WIP
     return data
 
 
-#scrapingSomministrationPoints( "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9")
+getDate( "https://app.powerbi.com/view?r=eyJrIjoiMzg4YmI5NDQtZDM5ZC00ZTIyLTgxN2MtOTBkMWM4MTUyYTg0IiwidCI6ImFmZDBhNzVjLTg2NzEtNGNjZS05MDYxLTJjYTBkOTJlNDIyZiIsImMiOjh9")
