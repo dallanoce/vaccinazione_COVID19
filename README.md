@@ -6,6 +6,12 @@ Sono stati aggiunte varie informazioni ritenute utili tra cui popolazione per re
 
 Una volta che i dati verranno resi pubblici in formato machine-readable, questo repo sarà probabilemnte dismesso.
 
+# STATUS
+
+Repo dismesso. I dati non saranno più aggiornati.
+
+Repository ufficiale: https://github.com/italia/covid19-opendata-vaccini
+
 ## Struttura
 
 * andamento_giornaliero = andamento giornaliere delle varie regioni

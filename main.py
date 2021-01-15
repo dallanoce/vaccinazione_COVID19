@@ -9,7 +9,7 @@ def main():
     print("Fetching the date...")
     DATE = scraping.getDate(config.LINK)
     print("CSV loading...")
-    print("Done.")
+
 
     conversione_csv.convertion(DATE, config.LINK, config.DEST_PATH, latest=True)
 

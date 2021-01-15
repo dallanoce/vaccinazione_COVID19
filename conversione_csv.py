@@ -25,7 +25,14 @@ def convertion(date, link, dest_path, latest=False):
     data = [str(datetime.date(2021, int(month), int(day)))] * (len(POPOLAZIONE))
     data.insert(0, "Data")
 
-    regions, somministrations, available, percentage = scraping(link)
+    regions, administration, available, percentage = scraping(link)
+
+    zipped = zip(regions, administration, available, percentage)
+    sort = sorted(zipped, key = lambda x: x[0])
+    regions = [regions for (regions, administration, available, percentage) in sort]
+    administration = [administration for (regions, administration, available, percentage) in sort]
+    available = [available for (regions, administration, available, percentage) in sort]
+    percentage = [percentage for (regions, administration, available, percentage) in sort]
 
     copertura = []
     copertura.append('Copertura')
@@ -34,10 +41,10 @@ def convertion(date, link, dest_path, latest=False):
     copertura_dosi.append(('Copertura Teorica'))
 
     for x in range(1, len(POPOLAZIONE)):
-        copertura.append(str(round(int(somministrations[x].replace('.', '')) / int(POPOLAZIONE[x]) * 100, 3)) + '%')
+        copertura.append(str(round(int(administration[x].replace('.', '')) / int(POPOLAZIONE[x]) * 100, 3)) + '%')
         copertura_dosi.append(str(round(int(available[x].replace('.', '')) / int(POPOLAZIONE[x]) * 100, 3)) + '%')
 
-        total_somministrations += int(somministrations[x].replace('.', ''))
+        total_somministrations += int(administration[x].replace('.', ''))
         total_available += int(available[x].replace('.', ''))
         total_population += int(POPOLAZIONE[x])
         total_health += int(PERSONALE_SANITARIO[x])
@@ -45,7 +52,7 @@ def convertion(date, link, dest_path, latest=False):
     print(copertura_dosi)
 
     regions.append("Totale")
-    somministrations.append(total_somministrations)
+    administration.append(total_somministrations)
     available.append(total_available)
     percentage.append(str(round(total_somministrations / total_available * 100, 3)) + '%')
     POPOLAZIONE.append(total_population)
@@ -55,7 +62,7 @@ def convertion(date, link, dest_path, latest=False):
 
     print("\n")
     result = [list(zipped) for zipped in
-              zip(regions, somministrations, available, percentage, POPOLAZIONE, PERSONALE_SANITARIO, copertura,
+              zip(regions, administration, available, percentage, POPOLAZIONE, PERSONALE_SANITARIO, copertura,
                   copertura_dosi, data)]
     print(result)
 

@@ -9,8 +9,8 @@ def getDate(link):
     driver = webdriver.Chrome(executable_path=r'C:\WebDrivers\chromedriver.exe')
     driver.get(link)
 
-    WebDriverWait(driver, 100).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "rowHeaders")))
+    WebDriverWait(driver, 200).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "visibleGroup")))
     parent = driver.find_element_by_class_name("visibleGroup")
 
     # print(parent)
@@ -21,7 +21,7 @@ def getDate(link):
     while '' in data:
         data.remove('')
 
-    date_time_obj = datetime.datetime.strptime(data[0], '%d/%m/%Y %H:%M:%S')
+    date_time_obj = datetime.datetime.strptime(data, '%d/%m/%Y %H:%M:%S')
 
 
 
@@ -43,18 +43,21 @@ def scraping(link):
 
     WebDriverWait(driver, 100).until(
         EC.presence_of_element_located((By.CLASS_NAME, "rowHeaders")))
+
     regions_parent = driver.find_element_by_class_name("rowHeaders")
-    # print(regions_parent)
+    #print(regions_parent)
     regions_children = regions_parent.find_elements_by_xpath('.//*')
     regions = [child.get_attribute('title') for child in regions_children]
 
     while '' in regions:
         regions.remove('')
 
-    WebDriverWait(driver, 100).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "bodyCells")))
+    #print(regions)
+
+    #WebDriverWait(driver, 100).until(
+    #    EC.presence_of_element_located((By.CLASS_NAME, "bodyCells")))
     parent = driver.find_element_by_class_name("bodyCells")
-    # print(parent)
+    #print(parent)
     children = parent.find_elements_by_xpath('.//*')
     data = [child.get_attribute('title') for child in children]
 
